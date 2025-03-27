@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala KSRTC - Official Bus Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1601758003122-53c40e686a19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        .bus-animation {
+            position: absolute;
+            bottom: 20%;
+            left: -100px;
+            animation: moveBus 15s linear infinite;
+        }
+        @keyframes moveBus {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(calc(100vw + 100px)); }
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .btn-glow {
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(251, 191, 36, 0.9);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Animated Header -->
+    <header class="bg-blue-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                
+                <div>
+                    
+                    <h1 class="text-xl font-bold"><i class="fas fa-bus mr-2"></i>Kerala State Road Transport Corporation</h1>
+                    <p class="text-sm">Serving Kerala since 1938</p>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-4">
+                <a href="ksrtc.html" class="hover:text-yellow-300">Home</a>
+                <a href="services.html" class="hover:text-yellow-300">Services</a>
+                <a href="fares.html" class="hover:text-yellow-300">Fares</a>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Animated Bus -->
+    <section class="hero-section flex flex-col justify-center items-center text-white relative overflow-hidden">
+        <div class="bus-animation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="60" viewBox="0 0 100 60">
+                <rect x="10" y="20" width="80" height="30" rx="5" fill="#FFD700"/>
+                <rect x="15" y="25" width="70" height="20" fill="#3B82F6"/>
+                <circle cx="25" cy="50" r="8" fill="#333"/>
+                <circle cx="75" cy="50" r="8" fill="#333"/>
+                <rect x="20" y="30" width="10" height="10" fill="#FFF" opacity="0.7"/>
+                <rect x="35" y="30" width="10" height="10" fill="#FFF" opacity="0.7"/>
+                <rect x="50" y="30" width="10" height="10" fill="#FFF" opacity="0.7"/>
+                <rect x="65" y="30" width="10" height="10" fill="#FFF" opacity="0.7"/>
+            </svg>
+        </div>
+
+        <div class="text-center px-4 z-10">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 floating">KSRTC Bus Tracker</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Track buses in real-time across Kerala's beautiful landscapes</p>
+            
+            <!-- Animated Button -->
+            <div class="flex flex-col items-center">
+                <button id="tracker-btn" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-4 px-8 rounded-full text-lg pulse btn-glow transition-all duration-300">
+                    Launch Bus Tracker Now
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Why Use Our Tracker?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-blue-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Live Tracking</h3>
+                    <p class="text-gray-600">See exactly where your bus is in real-time on an interactive map.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-blue-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Accurate Timings</h3>
+                    <p class="text-gray-600">Get precise arrival and departure times with delay notifications.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-blue-600 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Crowding Status</h3>
+                    <p class="text-gray-600">Check how crowded your bus is before boarding.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">How It Works</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center mb-8">
+                    <div class="md:w-1/3 text-center mb-4 md:mb-0">
+                        <div class="bg-blue-100 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-2">
+                            <span class="text-blue-800 font-bold text-2xl">1</span>
+                        </div>
+                        <h3 class="text-lg font-semibold">Select Route</h3>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-600">Choose your starting point and destination from our comprehensive list of stops across Kerala.</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center mb-8">
+                    <div class="md:w-1/3 text-center mb-4 md:mb-0">
+                        <div class="bg-blue-100 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-2">
+                            <span class="text-blue-800 font-bold text-2xl">2</span>
+                        </div>
+                        <h3 class="text-lg font-semibold">View Buses</h3>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-600">See all available buses on your selected route with their current locations and estimated arrival times.</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/3 text-center mb-4 md:mb-0">
+                        <div class="bg-blue-100 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-2">
+                            <span class="text-blue-800 font-bold text-2xl">3</span>
+                        </div>
+                        <h3 class="text-lg font-semibold">Track Your Bus</h3>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-gray-600">Follow your selected bus in real-time on the interactive map and get notified when it's approaching your stop.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-blue-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Track Your Bus?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Experience the convenience of real-time bus tracking across Kerala</p>
+            <button id="tracker-btn-2" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-4 px-8 rounded-full text-lg pulse btn-glow transition-all duration-300">
+                Launch Bus Tracker Now
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <i class="fas fa-bus mr-2"></i>
+                </div>
+                <div class="text-center md:text-right">
+                    <p>© 2023 Kerala State Road Transport Corporation</p>
+                    <p class="text-sm text-blue-300">All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Redirect functionality
+        function redirectToTracker() {
+            // Replace with your actual tracker page URL
+            window.location.href = "ksrtc-bus-tracker.html";
+        }
+
+        // Add event listeners to both buttons
+        document.getElementById('tracker-btn').addEventListener('click', redirectToTracker);
+        document.getElementById('tracker-btn-2').addEventListener('click', redirectToTracker);
+
+        // Add animation to features on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const features = document.querySelectorAll('.bg-white');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeIn');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            features.forEach(feature => {
+                observer.observe(feature);
+            });
+        });
+    </script>
+</body>
+</html>

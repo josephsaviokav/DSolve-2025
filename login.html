@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | BusConnect</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-800 p-4 flex justify-between items-center shadow-lg z-50">
+        <div class="flex items-center">
+            <a href="index.html" class="text-white font-bold text-xl flex items-center">
+                <i class="fas fa-bus mr-2"></i> BusConnect
+            </a>
+        </div>
+        <ul class="flex items-center text-white space-x-4">
+            <li><a href="index.html" class="hover:text-gray-300 transition duration-200">Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-10 px-4">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+            <div class="p-8">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800">Operator Login</h1>
+                    <p class="text-gray-600 mt-2">Access your bus management dashboard</p>
+                </div>
+                
+                <form id="login-form" class="space-y-6">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </div>
+                            <input type="email" id="email" required
+                                class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                                placeholder="operator@example.com">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input type="password" id="password" required
+                                class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                                placeholder="••••••••">
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input id="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                        </div>
+                        <a href="#" class="text-sm text-blue-600 hover:text-blue-500">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn" class="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">
+                        <span id="btn-text">Sign in</span>
+                        <span id="btn-spinner" class="ml-2 hidden">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </span>
+                    </button>
+                </form>
+                
+                <div id="error-message" class="mt-4 hidden">
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-exclamation-circle text-red-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p id="error-text" class="text-sm text-red-700"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBaTbi1991gm29Mkg8fF7SzrhwmR35Lg6o",
+            authDomain: "bus-connect-1b577.firebaseapp.com",
+            projectId: "bus-connect-1b577",
+            storageBucket: "bus-connect-1b577.appspot.com",
+            messagingSenderId: "389708422203",
+            appId: "1:389708422203:web:910ce222b141a55e6c501e"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        
+        // DOM elements
+        const loginForm = document.getElementById('login-form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnSpinner = document.getElementById('btn-spinner');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        
+        // Handle form submission
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Signing in...';
+            btnSpinner.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+            
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                console.log("User logged in:", userCredential.user);
+                
+                // Redirect to operator dashboard
+                window.location.href = "operator.html";
+            } catch (error) {
+                console.error("Login error:", error);
+                
+                // Show error message
+                errorText.textContent = getErrorMessage(error.code);
+                errorMessage.classList.remove('hidden');
+                
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.textContent = 'Sign in';
+                btnSpinner.classList.add('hidden');
+            }
+        });
+        
+        // Helper function to get user-friendly error messages
+        function getErrorMessage(errorCode) {
+            switch(errorCode) {
+                case 'auth/invalid-email':
+                    return 'Please enter a valid email address';
+                case 'auth/user-disabled':
+                    return 'This account has been disabled';
+                case 'auth/user-not-found':
+                    return 'No account found with this email';
+                case 'auth/wrong-password':
+                    return 'Incorrect password';
+                case 'auth/too-many-requests':
+                    return 'Too many failed attempts. Please try again later';
+                default:
+                    return 'Login failed. Please try again';
+            }
+        }
+    </script>
+</body>
+</html>

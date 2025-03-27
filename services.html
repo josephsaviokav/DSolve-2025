@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSRTC - Our Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1509744645303-3bc8aae568a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+        }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #f59e0b;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-blue-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                
+                <div>
+                    <h1 class="text-xl font-bold"><i class="fas fa-bus mr-2"></i>Kerala State Road Transport Corporation</h1>
+                    <p class="text-sm">Serving Kerala since 1938</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-4">
+                <a href="ksrtc.html" class="hover:text-yellow-300">Home</a>
+
+                <a href="fares.html" class="hover:text-yellow-300">Fares</a>
+
+                <a href="ksrtc-bus-tracker.html" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-4 py-2 rounded-lg font-medium">Bus Tracker</a>
+            </nav>
+            <button class="md:hidden text-white" id="mobileMenuButton">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-blue-900" id="mobileMenu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-yellow-300">Home</a>
+                <a href="services.html" class="block px-3 py-2 rounded-md text-base font-medium text-yellow-300">Services</a>
+                <a href="fares.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-yellow-300">Fares</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-yellow-300">Contact</a>
+                <a href="ksrtc-bus-tracker.html" class="block px-3 py-2 rounded-md text-base font-medium text-blue-900 bg-yellow-500">Bus Tracker</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section flex flex-col justify-center items-center text-white">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
+            <p class="text-xl md:text-2xl">Choose the perfect service for your journey</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Service Types -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800">Bus Service Types</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ordinary Service -->
+                <div class="service-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <div class="popular-badge">Basic</div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">Ordinary Service</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Our most economical service with frequent stops across all routes in Kerala.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Frequent stops throughout route</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Most affordable fares</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Available on all routes</span>
+                        </li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <a href="ordinary-service-details.html" class="text-blue-600 hover:text-blue-800 font-medium">Learn more →</a>
+                        <a href="fares.html" class="text-sm bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded">See fares</a>
+                    </div>
+                </div>
+
+                <!-- Express Service -->
+                <div class="service-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <div class="popular-badge">Popular</div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">Express Service</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Faster travel with limited stops between major towns and cities.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Limited stops for faster travel</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Comfortable seating</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Connects major towns and cities</span>
+                        </li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <a href="express-service-details.html" class="text-blue-600 hover:text-blue-800 font-medium">Learn more →</a>
+                        <a href="fares.html" class="text-sm bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded">See fares</a>
+                    </div>
+                </div>
+
+                <!-- Super Fast Service -->
+                <div class="service-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">Super Fast</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Premium service with minimal stops and air-conditioned comfort.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Minimal stops for fastest travel</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Air-conditioned comfort</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Priority boarding</span>
+                        </li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <a href="superfast-service-details.html" class="text-blue-600 hover:text-blue-800 font-medium">Learn more →</a>
+                        <a href="fares.html" class="text-sm bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded">See fares</a>
+                    </div>
+                </div>
+
+                <!-- Deluxe Service -->
+                <div class="service-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">Deluxe</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Premium comfort with luxury seating and onboard amenities.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Luxury reclining seats</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Onboard refreshments</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Priority booking</span>
+                        </li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <a href="deluxe-service-details.html" class="text-blue-600 hover:text-blue-800 font-medium">Learn more →</a>
+                        <a href="fares.html" class="text-sm bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded">See fares</a>
+                    </div>
+                </div>
+
+                <!-- Garuda Service -->
+                <div class="service-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <div class="popular-badge">Premium</div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">Garuda</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Executive class service with business amenities and comfort.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Business class seating</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Complimentary snacks & drinks</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Exclusive lounges at major stations</span>
+                        </li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <a href="garuda-service-details.html" class="text-blue-600 hover:text-blue-800 font-medium">Learn more →</a>
+                        <a href="fares.html" class="text-sm bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded">See fares</a>
+                    </div>
+                </div>
+
+                <!-- Low Floor Service -->
+                <div class="service-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">Low Floor</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Accessible service designed for differently-abled passengers.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Wheelchair accessible</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Priority for seniors and PWD</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Spacious interior with grab rails</span>
+                        </li>
+                    </ul>
+                    <div class="flex justify-between items-center">
+                        <a href="lowfloor-service-details.html" class="text-blue-600 hover:text-blue-800 font-medium">Learn more →</a>
+                        <a href="fares.html" class="text-sm bg-blue-100 hover:bg-blue-200 text-blue-800 px-3 py-1 rounded">See fares</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Services -->
+        <section class="mb-16 bg-blue-50 rounded-lg p-8">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800">Special Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- City Circular -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold">City Circular</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Frequent services connecting all major points within city limits.</p>
+                    <a href="city-circular.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">View routes & schedules →</a>
+                </div>
+
+                <!-- Night Service -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold">Night Service</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Overnight services connecting major cities across Kerala.</p>
+                    <a href="night-service.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">View routes & schedules →</a>
+                </div>
+
+                <!-- Village Service -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold">Village Service</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Connecting rural areas with nearby towns and cities.</p>
+                    <a href="village-service.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">View routes & schedules →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Book -->
+        <section class="bg-white rounded-lg shadow-md p-8 mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800">How to Book Your Journey</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <span class="text-blue-800 text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Choose Your Service</h3>
+                    <p class="text-gray-600">Select from our range of services based on your comfort and budget requirements.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <span class="text-blue-800 text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Select Route & Time</h3>
+                    <p class="text-gray-600">Pick your origin, destination and preferred travel time from available schedules.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <span class="text-blue-800 text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Complete Booking</h3>
+                    <p class="text-gray-600">Make payment and receive your e-ticket via SMS/email or collect from counter.</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <a href="booking-guide.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg mr-4">
+                    Detailed Booking Guide
+                </a>
+                <a href="book-now.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-8 rounded-lg">
+                    Book Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">KSRTC</h3>
+                    <p class="text-blue-200">Serving Kerala with reliable transportation since 1938. Committed to safety, comfort and sustainability.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-blue-200 hover:text-white">Home</a></li>
+                        <li><a href="services.html" class="text-blue-200 hover:text-white">Services</a></li>
+                        <li><a href="fares.html" class="text-blue-200 hover:text-white">Fares</a></li>
+                        <li><a href="routes.html" class="text-blue-200 hover:text-white">Routes</a></li>
+                        <li><a href="contact.html" class="text-blue-200 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="ordinary-service.html" class="text-blue-200 hover:text-white">Ordinary</a></li>
+                        <li><a href="express-service.html" class="text-blue-200 hover:text-white">Express</a></li>
+                        <li><a href="superfast-service.html" class="text-blue-200 hover:text-white">Super Fast</a></li>
+                        <li><a href="garuda-service.html" class="text-blue-200 hover:text-white">Garuda</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <address class="text-blue-200 not-italic">
+                        <p>Transport Bhavan,</p>
+                        <p>East Fort, Thiruvananthapuram,</p>
+                        <p>Kerala 695023</p>
+                        <p class="mt-2">Phone: <a href="tel:+914712460000" class="hover:text-white">0471 2460000</a></p>
+                        <p>Email: <a href="mailto:info@ksrtc.org" class="hover:text-white">info@ksrtc.org</a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-blue-300">
+                <p>&copy; 2023 Kerala State Road Transport Corporation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

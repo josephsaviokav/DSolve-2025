@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSRTC - Service Fares</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+        }
+        .fare-card {
+            transition: all 0.3s ease;
+        }
+        .fare-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .discount-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #f59e0b;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-blue-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                
+                <div>
+                    <h1 class="text-xl font-bold"><i class="fas fa-bus mr-2"></i>Kerala State Road Transport Corporation</h1>
+                    <p class="text-sm">Serving Kerala since 1938</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-4">
+                <a href="ksrtc.html" class="hover:text-yellow-300">Home</a>
+                <a href="services.html" class="text-yellow-300 font-medium">Services</a>
+                <a href="ksrtc-bus-tracker.html" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-4 py-2 rounded-lg font-medium">Bus Tracker</a>
+            </nav>
+            <button class="md:hidden text-white" id="mobileMenuButton">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-blue-900" id="mobileMenu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-yellow-300">Home</a>
+                <a href="fares.html" class="block px-3 py-2 rounded-md text-base font-medium text-yellow-300">Fares</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-yellow-300">Contact</a>
+                <a href="ksrtc-bus-tracker.html" class="block px-3 py-2 rounded-md text-base font-medium text-blue-900 bg-yellow-500">Bus Tracker</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section flex flex-col justify-center items-center text-white">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Service Fares</h1>
+            <p class="text-xl md:text-2xl">Find the right fare for your journey</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Fare Calculator -->
+        <section class="mb-16 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800">Fare Calculator</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label class="block text-gray-700 mb-2">From</label>
+                    <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="originSelect">
+                        <option value="">Select Origin</option>
+                        <option>Thiruvananthapuram</option>
+                        <option>Kollam</option>
+                        <option>Alappuzha</option>
+                        <option>Ernakulam</option>
+                        <option>Thrissur</option>
+                        <option>Kozhikode</option>
+                        <option>Kannur</option>
+                        <option>Kasaragod</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">To</label>
+                    <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="destinationSelect">
+                        <option value="">Select Destination</option>
+                        <option>Thiruvananthapuram</option>
+                        <option>Kollam</option>
+                        <option>Alappuzha</option>
+                        <option>Ernakulam</option>
+                        <option>Thrissur</option>
+                        <option>Kozhikode</option>
+                        <option>Kannur</option>
+                        <option>Kasaragod</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Service Type</label>
+                    <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="serviceSelect">
+                        <option value="">Select Service</option>
+                        <option>Ordinary</option>
+                        <option>Fast Passenger</option>
+                        <option>Express</option>
+                        <option>Super Fast</option>
+                        <option>Deluxe</option>
+                        <option>Garuda</option>
+                        <option>Low Floor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg" id="calculateFare">
+                    Calculate Fare
+                </button>
+            </div>
+            <div id="fareResult" class="mt-6 hidden p-4 bg-blue-50 rounded-lg">
+                <h3 class="text-lg font-semibold text-blue-800">Estimated Fare: <span id="calculatedFare" class="text-2xl font-bold"></span></h3>
+                <p class="text-gray-600 mt-2">Distance: <span id="calculatedDistance"></span> km</p>
+            </div>
+        </section>
+
+        <!-- Fare Cards -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 text-blue-800">Standard Fares</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ordinary -->
+                <div class="fare-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <div class="discount-badge">5% OFF</div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-800">Ordinary Service</h3>
+                    <p class="text-gray-600 mb-4">Basic service with frequent stops</p>
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold">₹8</span>
+                        <span class="text-gray-500">/km (Adult)</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold">₹4</span>
+                        <span class="text-gray-500">/km (Child)</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Frequent services</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>All routes available</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Student discounts</span>
+                        </li>
+                    </ul>
+                    <a href="ordinary-routes.html" class="block w-full text-center bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        View Routes
+                    </a>
+                </div>
+
+                <!-- Express -->
+                <div class="fare-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <h3 class="text-xl font-bold mb-2 text-blue-800">Express Service</h3>
+                    <p class="text-gray-600 mb-4">Limited stops for faster travel</p>
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold">₹10</span>
+                        <span class="text-gray-500">/km (Adult)</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold">₹5</span>
+                        <span class="text-gray-500">/km (Child)</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Limited stops</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Faster travel times</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Comfortable seating</span>
+                        </li>
+                    </ul>
+                    <a href="express-routes.html" class="block w-full text-center bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        View Routes
+                    </a>
+                </div>
+
+                <!-- Super Fast -->
+                <div class="fare-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <div class="discount-badge">10% OFF</div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-800">Super Fast</h3>
+                    <p class="text-gray-600 mb-4">Premium service with minimal stops</p>
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold">₹15</span>
+                        <span class="text-gray-500">/km (Adult)</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold">₹8</span>
+                        <span class="text-gray-500">/km (Child)</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Minimal stops</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Air-conditioned</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Priority boarding</span>
+                        </li>
+                    </ul>
+                    <a href="superfast-routes.html" class="block w-full text-center bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        View Routes
+                    </a>
+                </div>
+
+                <!-- Deluxe -->
+                <div class="fare-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <h3 class="text-xl font-bold mb-2 text-blue-800">Deluxe</h3>
+                    <p class="text-gray-600 mb-4">Premium comfort with amenities</p>
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold">₹20</span>
+                        <span class="text-gray-500">/km (Adult)</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold">₹10</span>
+                        <span class="text-gray-500">/km (Child)</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Luxury seating</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Onboard refreshments</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Priority booking</span>
+                        </li>
+                    </ul>
+                    <a href="deluxe-routes.html" class="block w-full text-center bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        View Routes
+                    </a>
+                </div>
+
+                <!-- Garuda -->
+                <div class="fare-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <div class="discount-badge">15% OFF</div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-800">Garuda</h3>
+                    <p class="text-gray-600 mb-4">Executive class service</p>
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold">₹25</span>
+                        <span class="text-gray-500">/km (Adult)</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold">₹13</span>
+                        <span class="text-gray-500">/km (Child)</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Business class seating</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Complimentary snacks</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Exclusive lounges</span>
+                        </li>
+                    </ul>
+                    <a href="garuda-routes.html" class="block w-full text-center bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        View Routes
+                    </a>
+                </div>
+
+                <!-- Low Floor -->
+                <div class="fare-card bg-white rounded-lg shadow-md p-6 relative overflow-hidden">
+                    <h3 class="text-xl font-bold mb-2 text-blue-800">Low Floor</h3>
+                    <p class="text-gray-600 mb-4">Accessible service for all</p>
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold">₹12</span>
+                        <span class="text-gray-500">/km (Adult)</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold">₹6</span>
+                        <span class="text-gray-500">/km (Child)</span>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Wheelchair accessible</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Priority for seniors</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Spacious interior</span>
+                        </li>
+                    </ul>
+                    <a href="lowfloor-routes.html" class="block w-full text-center bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        View Routes
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Concessions -->
+        <section class="bg-white rounded-lg shadow-md p-6 mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800">Concessions & Discounts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Student Discounts</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>50% discount on all services with valid student ID</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Special monthly passes available</span>
+                        </li>
+                    </ul>
+                    <a href="student-discounts.html" class="inline-block mt-4 bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        Learn More
+                    </a>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Senior Citizen Benefits</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>40% discount for citizens above 60 years</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Priority seating on all buses</span>
+                        </li>
+                    </ul>
+                    <a href="senior-benefits.html" class="inline-block mt-4 bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        Learn More
+                    </a>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Special Categories</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Free travel for persons with disabilities</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>50% discount for armed forces personnel</span>
+                        </li>
+                    </ul>
+                    <a href="special-categories.html" class="inline-block mt-4 bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        Learn More
+                    </a>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Seasonal Offers</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Summer holiday special discounts</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>Festival season family packages</span>
+                        </li>
+                    </ul>
+                    <a href="seasonal-offers.html" class="inline-block mt-4 bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        Current Offers
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">KSRTC</h3>
+                    <p class="text-blue-200">Serving Kerala with reliable transportation since 1938. Committed to safety, comfort and sustainability.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-blue-200 hover:text-white">Home</a></li>
+                        <li><a href="fares.html" class="text-blue-200 hover:text-white">Fares</a></li>
+                        <li><a href="routes.html" class="text-blue-200 hover:text-white">Routes</a></li>
+                        <li><a href="timetables.html" class="text-blue-200 hover:text-white">Timetables</a></li>
+                        <li><a href="contact.html" class="text-blue-200 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="ordinary-service.html" class="text-blue-200 hover:text-white">Ordinary</a></li>
+                        <li><a href="express-service.html" class="text-blue-200 hover:text-white">Express</a></li>
+                        <li><a href="deluxe-service.html" class="text-blue-200 hover:text-white">Deluxe</a></li>
+                        <li><a href="garuda-service.html" class="text-blue-200 hover:text-white">Garuda</a></li>
+                        <li><a href="lowfloor-service.html" class="text-blue-200 hover:text-white">Low Floor</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <address class="text-blue-200 not-italic">
+                        <p>Transport Bhavan,</p>
+                        <p>East Fort, Thiruvananthapuram,</p>
+                        <p>Kerala 695023</p>
+                        <p class="mt-2">Phone: <a href="tel:+914712460000" class="hover:text-white">0471 2460000</a></p>
+                        <p>Email: <a href="mailto:info@ksrtc.org" class="hover:text-white">info@ksrtc.org</a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-blue-300">
+                <p>&copy; 2023 Kerala State Road Transport Corporation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Fare calculator functionality
+        document.getElementById('calculateFare').addEventListener('click', function() {
+            const origin = document.getElementById('originSelect').value;
+            const destination = document.getElementById('destinationSelect').value;
+            const service = document.getElementById('serviceSelect').value;
+            
+            if (!origin || !destination || !service) {
+                alert('Please select origin, destination and service type');
+                return;
+            }
+            
+            // Mock calculation - in a real app this would call an API
+            const farePerKm = {
+                'Ordinary': 8,
+                'Fast Passenger': 9,
+                'Express': 10,
+                'Super Fast': 15,
+                'Deluxe': 20,
+                'Garuda': 25,
+                'Low Floor': 12
+            };
+            
+            // Mock distances between major cities (in km)
+            const distances = {
+                'Thiruvananthapuram': {
+                    'Kollam': 65,
+                    'Alappuzha': 150,
+                    'Ernakulam': 200,
+                    'Thrissur': 250,
+                    'Kozhikode': 350,
+                    'Kannur': 420,
+                    'Kasaragod': 500
+                },
+                'Kollam': {
+                    'Thiruvananthapuram': 65,
+                    'Alappuzha': 85,
+                    'Ernakulam': 135,
+                    'Thrissur': 185,
+                    'Kozhikode': 285,
+                    'Kannur': 355,
+                    'Kasaragod': 435
+                },
+                // Add other city distances similarly...
+            };
+            
+            let distance = 0;
+            if (distances[origin] && distances[origin][destination]) {
+                distance = distances[origin][destination];
+            } else if (distances[destination] && distances[destination][origin]) {
+                distance = distances[destination][origin];
+            } else {
+                // Default mock distance if route not defined
+                distance = Math.abs(Object.keys(distances).indexOf(origin) - Object.keys(distances).indexOf(destination)) * 50 + 50;
+            }
+            
+            const fare = farePerKm[service] * distance;
+            
+            document.getElementById('calculatedFare').textContent = '₹' + fare.toFixed(0);
+            document.getElementById('calculatedDistance').textContent = distance;
+            document.getElementById('fareResult').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
