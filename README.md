@@ -22,9 +22,9 @@ Bus tracking and booking.
 ## 🛠️ Tech Stack
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| Html     | vX.X.X  |         |
-| css     | vX.X.X  |         |
-| Java script     | vX.X.X  |         |
+| Html     |HTML5  |         |
+| css     | CSS3  |         |
+| Java script     | ES14  |         |
 
 ## 🛠️ Setup Instructions
 
